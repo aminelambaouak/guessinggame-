@@ -2,27 +2,27 @@
 
 # guessinggame.sh
 
-# Count the number of regular files in the current directory
-file_count=$(ls -l | grep -c ^-)
+# Count all regular files in current directory (including hidden ones)
+file_count=$(find . -maxdepth 1 -type f | wc -l)
 
 echo "Welcome to the Guessing Game!"
-echo "Can you guess how many regular files are in the current directory?"
+echo "How many regular files (including hidden ones) are in the current directory?"
 
 while true; do
     read -p "Enter your guess: " guess
 
-    # Validate input is a number
+    # Check if input is a number
     if ! [[ "$guess" =~ ^[0-9]+$ ]]; then
-        echo "Please enter a valid number."
+        echo "❌ Please enter a valid number."
         continue
     fi
 
-    if [[ "$guess" -lt "$file_count" ]]; then
-        echo "Too low! Try again."
-    elif [[ "$guess" -gt "$file_count" ]]; then
-        echo "Too high! Try again."
+    if (( guess < file_count )); then
+        echo "📉 Too low! Try again."
+    elif (( guess > file_count )); then
+        echo "📈 Too high! Try again."
     else
-        echo "Congratulations! You guessed it right!"
+        echo "🎉 Congratulations! You guessed correctly: $file_count files."
         break
     fi
 done
