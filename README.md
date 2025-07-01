@@ -1,11 +1,11 @@
-# 🕹️ Guessing Game
+# 🕹️ Guessing Game (Bash)
 
-This is a simple Bash script that challenges the user to guess how many regular files are in the current directory.
+A fun Bash script that challenges users to guess how many **regular files** (including hidden ones) are in the current directory.
+
+---
 
 ## 🚀 How to Run
 
-1. Open your terminal.
-2. Clone the repo or download `guessinggame.sh`.
-3. Make it executable (optional but useful):
-   ```bash
-   chmod +x guessinggame.sh
+### Option 1: Use Bash directly
+```bash
+bash guessinggame.sh
